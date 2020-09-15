@@ -65,3 +65,14 @@ class KMeans:
         distances = [np.linalg.norm(data - self.centroids[centroid]) for centroid in self.centroids]
         classification = distances.index(min(distances))
         return classification
+
+    def sse(self):
+        """
+        compute the sum of squared errors
+        :return: sum of squared errors
+        """
+        sse = 0
+        for centroid in self.centroids:
+            for data in self.classifications[centroid]:
+                sse += np.linalg.norm(data - self.centroids[centroid]) ** 2
+        return sse
